@@ -55,3 +55,5 @@ GROQ_API_KEY=your_groq_api_key
 ```
 
 ## Demo
+
+![Screenshot 2025-04-27 203608](https://github.com/user-attachments/assets/1acb47fc-a9c1-43f4-99d7-b9ab6f9c87cd)
