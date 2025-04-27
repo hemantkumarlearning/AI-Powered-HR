@@ -8,7 +8,8 @@ load_dotenv()
 
 llm = ChatGroq(
     api_key=os.getenv("GROQ_API_KEY"),
-    model="groq/llama3-70b-8192"
+    model="groq/llama3-70b-8192",
+    temperature=0
 )
 
 resume_evaluator = Agent(
@@ -23,19 +24,22 @@ def get_screening_tasks(resume_text, job_text):
     return [
         Task(
             description=f"""
-Compare the following resume with the job description.
-
-Resume:
+### RESUME TEXT ###
 {resume_text}
 
-Job Description:
+### JOB DESCRIPTION ###
 {job_text}
 
-Decide whether this candidate should be shortlisted.
-Respond **only** in the following format:
+### INSTRUCTIONS ###
+Evaluate whether the resume matches the job.
+
+Respond using EXACTLY this format:
 
 Shortlisted: Yes or No  
-Reason: A concise explanation (1-3 sentences) based on skills, experience, and relevance to the job.
+Reason: <concise explanation>
+
+DO NOT say anything else. Do not explain. Do not preface the answer.
+Begin directly with 'Shortlisted:'.
 """,
             agent=resume_evaluator,
             expected_output="""

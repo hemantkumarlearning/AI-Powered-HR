@@ -21,14 +21,18 @@ if st.button("Evaluate Candidate") and upload_resume and job_description:
     crew = Crew(agents=[tasks[0].agent],tasks=tasks,verbose=True)
     result = crew.kickoff()
 
-    task_output = result.tasks_output[0]  
+    task_output = result.tasks_output[0]
     raw_output = task_output.raw  
 
     if raw_output:
-        st.subheader("Screening Result:")
-        lines = raw_output.strip().split('\n')
-        for line in lines:
-            st.markdown(f"**{line.strip()}**")
+        if "Shortlisted:" in raw_output and "Reason:" in raw_output:
+            lines = raw_output.strip().split('\n')
+            for line in lines:
+                if line.strip():  # Skip empty lines
+                    st.markdown(f"**{line.strip()}**")
+        else:
+            st.warning("The output format was incorrect. Here's the raw output:")
+            st.text(raw_output)
     else:
         st.write("Could not extract screening result.")
 
