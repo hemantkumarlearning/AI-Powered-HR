@@ -41,8 +41,8 @@ A smart and efficient resume screening tool built using AI that evaluates resume
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/yourusername/resume-screening-ai.git
-cd resume-screening-ai
+git clone https://github.com/hemantkumarlearning/AI-Powered-HR.git
+cd AI-Powered-HR
 pip install -r requirements.txt
 streamlit run app.py
 ```
