@@ -45,3 +45,13 @@ git clone https://github.com/yourusername/resume-screening-ai.git
 cd resume-screening-ai
 pip install -r requirements.txt
 streamlit run app.py
+```
+
+## Configuration
+Ensure you have the following environment variables set in a .env file:
+
+```
+GROQ_API_KEY=your_groq_api_key
+```
+
+## Demo
